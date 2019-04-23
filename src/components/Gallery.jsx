@@ -14,8 +14,8 @@ class Gallery extends Component {
   }
   getData() {    
     const galleryName = this.props.match.params.galleryName;
- 
     
+
     const filteredGalleries = Data.filter((gallery)=>{
         if(gallery.type === galleryName) {
             return true;
@@ -34,9 +34,9 @@ class Gallery extends Component {
   }
   render() {
     return (
-    <div className = "mt-5">
-    <h2 className="categoriesName ml-3">{this.props.type}</h2>
-    <div className = "containing">   
+    <div className = "row">
+    <h2 className="title-cat">{this.props.match.params.galleryName}</h2>
+    <div className = "gallery-type">   
         {this.state.movies.map((film, idx) => {
         return (
           <Movie

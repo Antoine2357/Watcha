@@ -7,6 +7,7 @@ import CastMusic from "./CastMusic";
 import CastDirector from "./CastDirector";
 import '../Fiche.css';
 import Footer from "./Footer";
+import { NavLink } from 'react-router-dom';
 
 
 class Fiche extends React.Component {
@@ -66,8 +67,8 @@ class Fiche extends React.Component {
             </div>
             <div className="movie-genre">
               <ul>
-              <h4>Genres </h4>{this.state.genres === undefined ? ' ' : this.state.genres.map((genre) => {
-                  return `${genre.name}, `
+              <h4>Genres </h4>{this.state.genres === undefined ? ' ' : this.state.genres.map((genre) => {                
+                  return <NavLink activeClassName="active" className="textdeco" exact to={`/gallery/${genre.name}/${genre.id}`}>{genre.name} </NavLink>
                 }
                 )
                 }

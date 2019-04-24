@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import './header.css';
-import { Dropdown, DropdownItem, DropdownToggle, DropdownMenu, InputGroup, InputGroupAddon, Input } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
-import { Link } from "react-router-dom";
+import { Dropdown, DropdownItem, DropdownToggle, DropdownMenu, InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
+import { NavLink, Link } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import Routing from "./components/Routing";
-
-
+import ModalTest from './components/ModalTest';
+import Footer from './components/Footer';
+import ScrollToTop from "./components/ScrollTop"
 
 class App extends Component {
   constructor(props) {
@@ -20,8 +20,6 @@ class App extends Component {
       search: ""
     };
     this.onChange = this.onChange.bind(this);
-
-    this.console = this.console.bind(this);
   }
 
   onChange(e) {
@@ -29,31 +27,34 @@ class App extends Component {
       search: e.target.value,
     });
   }
-
-  console(e) {
-    console.log(this.state.search)
-
-  }
-
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen,
     });
   }
+
+  /*handleToggle() {
+    this.setState({
+      show : !this.state.show,
+    });
+  }*/
+
   render() {
+    //console.log('this.state.show => ' + this.state.show);
     return (
       <Router>
+        <ScrollToTop>
         <div className="App">
           <Fragment>
             <div className="menu">
               <nav className="navbar navbar-expand-xl navbar-light">
                 <ul>
-                  <li><NavLink activeClassName="active" style={{ textDecoration: 'none' }} exact to="/">
+                  <li><NavLink activeClassName="active" style={{ textDecoration: 'none', outline: 'none' }} exact to="/">
                     <img className="logo" src="https://image.noelshack.com/fichiers/2019/15/5/1555076151-screenshot-from-2019-04-12-11-21-07-convertimage-1.png" />
                   </NavLink></li>
                 </ul>
                 <ul className="navbar-nav mx-auto">
-                  
+
                   <li><NavLink activeClassName="active" className="nav-link" exact to="/gallery/Adventure/12">Adventure</NavLink></li>
                   <li><NavLink activeClassName="active" className="nav-link" exact to="/gallery/Science Fiction/878">Science Fiction</NavLink></li>
                   <li><NavLink activeClassName="active" className="nav-link" exact to="/gallery/Action/28">Action</NavLink></li>
@@ -73,13 +74,19 @@ class App extends Component {
                     <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                       <DropdownToggle nav caret>
                         Listes
-                </DropdownToggle>
+                    </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem>My favorites</DropdownItem>
                         <DropdownItem >To see later</DropdownItem>
                         <DropdownItem>Others lists</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>+ Add liste</DropdownItem>
+                          <DropdownItem id="addlist">
+                          </DropdownItem>
+                          <Button variant="primary" onClick={this.handleToggle}>
+                          <ModalTest />
+                          </Button>
+                        {/*<ModalCreatList show={this.state.show} />*/}
+                       
                       </DropdownMenu>
                     </Dropdown>
                   </li>
@@ -94,14 +101,14 @@ class App extends Component {
                   onChange={this.onChange}
                 />
                 <Link to={`/searchgallery/${this.state.search}`}>
-                  <button
-                    onClick={this.console}
-                  >Search</button></Link>
+                  <Button>Search</Button></Link>
               </InputGroup>
             </div>
           </Fragment>
           <Routing />
+          <Footer className="footer" />
         </div>
+        </ScrollToTop>
       </Router>
     );
   }

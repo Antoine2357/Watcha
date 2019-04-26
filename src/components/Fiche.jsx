@@ -9,20 +9,20 @@ import favlogo from './img/fav.png';
 import '../Fiche.css';
 import Footer from "./Footer";
 import { NavLink } from 'react-router-dom';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+
 class Fiche extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       fiche: [],
       genres: [],
-      videoId: ""
+      videoId: "",
+      isOnFav: false
     };
   }
   componentDidMount() {
     this.getFiche()
-  }
+  };
   getFiche() {
     axios.get(`https://api.themoviedb.org/3/movie/ ${this.props.match.params.ficheNumber} ?api_key=a8a3380a564299f359c18e52aaa5bc79`)
       .then(response => {
@@ -48,21 +48,31 @@ class Fiche extends React.Component {
           });
       });
   }
-
   addFav = () => {
-
-  let favorites = {
-    user_id:"2",
-    movie_id: this.props.match.params.ficheNumber
+    if (this.state.isOnFav === false) {
+      let favorites = {
+        user_id: "2",
+        movie_id: this.props.match.params.ficheNumber
+      };
+      axios.post('http://localhost:5050/favorites', { ...favorites })
+        .then(res => {
+        });
+      alert("Added to favorite list");
+      this.setState({isOnFav : !this.state.isOnFav})
+    }
+    else {
+      axios.get(`http://localhost:5050/favorites?movie_id=${this.props.match.params.ficheNumber}&user=2`)
+        .then(res => {
+          console.log(res.data[0].id)
+          let idToDelete = res.data[0].id            
+      axios.delete(`http://localhost:5050/favorites/${idToDelete}`)
+        .then(res => { 
+        });
+      });
+      alert("Deleted from favorite list");
+      this.setState({isOnFav : !this.state.isOnFav})
+    };
   };
-      axios.post('http://localhost:5050/favorites', {...favorites}) 
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-  alert("Added to favorite list");
-  }
-
   render() {
     return (
       <div className="container-fluid">
@@ -70,8 +80,8 @@ class Fiche extends React.Component {
           <h1 className="movie-title">{this.state.fiche.original_title}</h1>
           <div className="movie-pic row">
             <div className="movie-fav col-lg-4 col-md-12">
-            <img className="movie-poster" src={"https://image.tmdb.org/t/p/w500" + this.state.fiche.poster_path} alt={this.state.fiche.original_title} />
-            <img src={favlogo} className="favicon" onClick={this.addFav} alt="fav" title="Favorite" />
+              <img className="movie-poster" src={"https://image.tmdb.org/t/p/w500" + this.state.fiche.poster_path} alt={this.state.fiche.original_title} />
+              <img src={favlogo} className="favicon" onClick={this.addFav} alt="fav" title="Favorite" />
             </div>
             <div className="youtube col-lg-6 col-md-12"><Youtube className="heigh-youtube" videoId={this.state.videoId} />
               <p className="movie-date">Release date : {this.state.fiche.release_date}</p>
@@ -93,8 +103,8 @@ class Fiche extends React.Component {
               </ul>
             </div>
             <div className="movie-casting">
-                <div className="ml-5">
-              <h4 className="">Casting</h4></div>
+              <div className="ml-5">
+                <h4 className="">Casting</h4></div>
               <div className="ul-actors-pics mt-3">
                 <CastingActors idFilm={this.props.match.params.ficheNumber} />
               </div>

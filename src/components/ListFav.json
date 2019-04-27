@@ -12,18 +12,8 @@
   "favorites": [
     {
       "user_id": "2",
-      "movie_id": "151960",
-      "id": 4
-    },
-    {
-      "user_id": "2",
       "movie_id": "98566",
       "id": 6
-    },
-    {
-      "user_id": "2",
-      "movie_id": "330459",
-      "id": 7
     },
     {
       "user_id": "2",
@@ -31,7 +21,12 @@
       "id": 8
     }
   ],
-  "rating" : [
-    
+  "rating": [
+    {
+      "user_id": "2",
+      "movie_id": "1116",
+      "rate": 6,
+      "id": 4
+    }
   ]
 }

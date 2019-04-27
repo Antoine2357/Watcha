@@ -6,6 +6,7 @@ import CastTech from "./CastTech";
 import CastMusic from "./CastMusic";
 import CastDirector from "./CastDirector";
 import favlogo from './img/fav.png';
+import nonfavlogo from './img/nonfav.png';
 import '../Fiche.css';
 import Footer from "./Footer";
 import { NavLink } from 'react-router-dom';
@@ -19,7 +20,8 @@ class Fiche extends React.Component {
       fiche: [],
       genres: [],
       videoId: "",
-      rateToSet : 0
+      rateToSet : 0,
+      favoriteLogo : ""
     };
   }
   componentDidMount() {
@@ -50,6 +52,19 @@ class Fiche extends React.Component {
             console.log("Echec appel API Youtube: " + error);
           });
       });
+      axios.get(`http://localhost:5050/favorites?movie_id=${this.props.match.params.ficheNumber}&user=2`)
+      .then(res => {
+        if (res.data.length === 0) {
+          this.setState({
+            favoriteLogo : nonfavlogo
+          })
+        }else{
+          this.setState({
+            favoriteLogo : favlogo
+          });
+        };
+      });
+        
   }
   addFav = () => {
     axios.get(`http://localhost:5050/favorites?movie_id=${this.props.match.params.ficheNumber}&user=2`)
@@ -129,7 +144,7 @@ class Fiche extends React.Component {
           <div className="movie-pic row">
             <div className="movie-fav col-lg-4 col-md-12">
               <img className="movie-poster" src={"https://image.tmdb.org/t/p/w500" + this.state.fiche.poster_path} alt={this.state.fiche.original_title} />
-              <img src={favlogo} className="favicon" onClick={this.addFav} alt="fav" title="Favorite" />
+              <img src={this.state.favoriteLogo} className="favicon" onClick={this.addFav} alt="fav" title="Favorite" />
             </div>
             <div className="youtube col-lg-6 col-md-12"><Youtube className="heigh-youtube" videoId={this.state.videoId} />
               <p className="movie-date">Release date : {this.state.fiche.release_date}</p>

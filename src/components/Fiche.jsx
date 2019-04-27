@@ -89,7 +89,7 @@ class Fiche extends React.Component {
           axios.post('http://localhost:5050/rating', { ...rating })
             .then(res => {
             });
-          swal("Added", "This movie has been rated !", "success");
+          swal("Rated", "This movie has been rated !", "success");
         }
         else {
           axios.get(`http://localhost:5050/rating?movie_id=${this.props.match.params.ficheNumber}&user=2`)
@@ -108,7 +108,7 @@ class Fiche extends React.Component {
           axios.post('http://localhost:5050/rating', { ...rating })
             .then(res => {
             });
-          swal("Added", "This movie has been rated !", "success");
+          swal("Rated", "This movie has been rated !", "success");
         };
       });
   };

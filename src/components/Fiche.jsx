@@ -138,8 +138,9 @@ class Fiche extends React.Component {
           <div className="Rating">
             Rate this movie : <Rating stop={10} onClick={(value) => this.addRate(value)}
               placeholderRating={this.state.rateToSet}
-              //emptySymbol={<img src="https://cdn3.iconfinder.com/data/icons/pretty-office-part-3/256/Star_empty-512.png" className="Rate-icon" />}
-              //fullSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" />}
+              placeholderSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" />}
+              emptySymbol={<img src="https://cdn3.iconfinder.com/data/icons/pretty-office-part-3/256/Star_empty-512.png" className="Rate-icon" />}
+              fullSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" />}
               onClick={this.addRate}
             />
           </div>

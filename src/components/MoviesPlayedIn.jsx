@@ -20,8 +20,7 @@ class MoviePlayedIn extends React.Component {
             movies: response.data
           });
         });
-        this.setState({compteur : this.state.compteur+1})
-      console.log(this.state.compteur)
+        this.setState({compteur : this.state.compteur+1})      
     }
     else {
       axios.get(`https://api.themoviedb.org/3/movie/${this.props.cle}?api_key=1092ee57947c8bdfc25a5a0641ecb8ec`)

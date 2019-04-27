@@ -78,6 +78,9 @@ class Fiche extends React.Component {
             .then(res => {
             });
           swal("Added", "You added this movie to favorite !", "success");
+          this.setState({
+            favoriteLogo : favlogo
+          });
         }
         else {
           axios.get(`http://localhost:5050/favorites?movie_id=${this.props.match.params.ficheNumber}&user=2`)
@@ -88,6 +91,9 @@ class Fiche extends React.Component {
                 });
             });
           swal("Removed", "This movie rate has been removed", "error");
+          this.setState({
+            favoriteLogo : nonfavlogo
+          });
         };
       });
   };

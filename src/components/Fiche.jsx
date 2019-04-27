@@ -21,7 +21,8 @@ class Fiche extends React.Component {
       genres: [],
       videoId: "",
       rateToSet : 0,
-      favoriteLogo : ""
+      favoriteLogo : "",
+      favoriteLogoTitle: ""
     };
   }
   componentDidMount() {
@@ -56,11 +57,13 @@ class Fiche extends React.Component {
       .then(res => {
         if (res.data.length === 0) {
           this.setState({
-            favoriteLogo : nonfavlogo
+            favoriteLogo : nonfavlogo,
+            favoriteLogoTitle : "Add to Favorites"
           })
         }else{
           this.setState({
-            favoriteLogo : favlogo
+            favoriteLogo : favlogo,
+            favoriteLogoTitle : "Remove from Favorites"
           });
         };
       });
@@ -79,7 +82,8 @@ class Fiche extends React.Component {
             });
           swal("Added", "You added this movie to favorite !", "success");
           this.setState({
-            favoriteLogo : favlogo
+            favoriteLogo : favlogo,
+            favoriteLogoTitle : "Remove from Favorites"
           });
         }
         else {
@@ -92,7 +96,8 @@ class Fiche extends React.Component {
             });
           swal("Removed", "This movie rate has been removed", "error");
           this.setState({
-            favoriteLogo : nonfavlogo
+            favoriteLogo : nonfavlogo,
+            favoriteLogoTitle : "Add to Favorites"
           });
         };
       });
@@ -150,7 +155,7 @@ class Fiche extends React.Component {
           <div className="movie-pic row">
             <div className="movie-fav col-lg-4 col-md-12">
               <img className="movie-poster" src={"https://image.tmdb.org/t/p/w500" + this.state.fiche.poster_path} alt={this.state.fiche.original_title} />
-              <img src={this.state.favoriteLogo} className="favicon" onClick={this.addFav} alt="fav" title="Favorite" />
+              <img src={this.state.favoriteLogo} className="favicon" onClick={this.addFav} alt="fav" title={this.state.favoriteLogoTitle} />
             </div>
             <div className="youtube col-lg-6 col-md-12"><Youtube className="heigh-youtube" videoId={this.state.videoId} />
               <p className="movie-date">Release date : {this.state.fiche.release_date}</p>

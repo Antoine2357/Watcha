@@ -15,7 +15,6 @@ class App extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false,
-
       search: ""
     };
     this.onChange = this.onChange.bind(this);
@@ -32,14 +31,7 @@ class App extends Component {
     });
   }
 
-  /*handleToggle() {
-    this.setState({
-      show : !this.state.show,
-    });
-  }*/
-
-  render() {
-    //console.log('this.state.show => ' + this.state.show);
+  render() {   
     return (
       <Router>
         <ScrollToTop>

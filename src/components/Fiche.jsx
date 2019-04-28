@@ -6,10 +6,12 @@ import CastTech from "./CastTech";
 import CastMusic from "./CastMusic";
 import CastDirector from "./CastDirector";
 import favlogo from './img/fav.png';
+import nonfavlogo from './img/nonfav.png';
 import '../Fiche.css';
 import Footer from "./Footer";
 import { NavLink } from 'react-router-dom';
 import swal from 'sweetalert';
+import Rating from "react-rating";
 
 class Fiche extends React.Component {
   constructor(props) {
@@ -17,11 +19,15 @@ class Fiche extends React.Component {
     this.state = {
       fiche: [],
       genres: [],
-      videoId: ""      
+      videoId: "",
+      rateToSet : 0,
+      favoriteLogo : "",
+      favoriteLogoTitle: ""
     };
   }
   componentDidMount() {
     this.getFiche()
+    this.setDefaultRate()
   };
   getFiche() {
     axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.ficheNumber}?api_key=a8a3380a564299f359c18e52aaa5bc79`)
@@ -47,6 +53,21 @@ class Fiche extends React.Component {
             console.log("Echec appel API Youtube: " + error);
           });
       });
+      axios.get(`http://localhost:5050/favorites?movie_id=${this.props.match.params.ficheNumber}&user=2`)
+      .then(res => {
+        if (res.data.length === 0) {
+          this.setState({
+            favoriteLogo : nonfavlogo,
+            favoriteLogoTitle : "Add to Favorites"
+          })
+        }else{
+          this.setState({
+            favoriteLogo : favlogo,
+            favoriteLogoTitle : "Remove from Favorites"
+          });
+        };
+      });
+        
   }
   addFav = () => {
     axios.get(`http://localhost:5050/favorites?movie_id=${this.props.match.params.ficheNumber}&user=2`)
@@ -60,20 +81,72 @@ class Fiche extends React.Component {
             .then(res => {
             });
           swal("Added", "You added this movie to favorite !", "success");
+          this.setState({
+            favoriteLogo : favlogo,
+            favoriteLogoTitle : "Remove from Favorites"
+          });
         }
         else {
           axios.get(`http://localhost:5050/favorites?movie_id=${this.props.match.params.ficheNumber}&user=2`)
             .then(res => {
-              console.log(res.data[0].id)
               let idToDelete = res.data[0].id
               axios.delete(`http://localhost:5050/favorites/${idToDelete}`)
                 .then(res => {
                 });
             });
-          swal("Removed", "This movie has been deleted from favorite list" , "error");
+          swal("Removed", "This movie rate has been removed", "error");
+          this.setState({
+            favoriteLogo : nonfavlogo,
+            favoriteLogoTitle : "Add to Favorites"
+          });
         };
       });
   };
+  setDefaultRate(){
+    axios.get(`http://localhost:5050/rating?movie_id=${this.props.match.params.ficheNumber}&user=2`)
+            .then(res =>{
+              if (res.data.length!==0){
+                this.setState({rateToSet : res.data[0].rate})
+              }
+              
+            })
+  };
+
+  addRate = (value) => {
+    axios.get(`http://localhost:5050/rating?movie_id=${this.props.match.params.ficheNumber}&user=2`)
+      .then(res => {        
+        if (res.data.length === 0) {
+          let rating = {
+            user_id: "2",
+            movie_id: this.props.match.params.ficheNumber,
+            rate: value
+          };
+          axios.post('http://localhost:5050/rating', { ...rating })
+            .then(res => {
+            });
+          swal("Rated", "This movie has been rated !", "success");
+        }
+        else {
+          axios.get(`http://localhost:5050/rating?movie_id=${this.props.match.params.ficheNumber}&user=2`)
+            .then(res => {
+              let idToDelete = res.data[0].id
+              axios.delete(`http://localhost:5050/rating/${idToDelete}`)
+                .then(res => {                  
+                });
+            });
+          let rating = {
+            user_id: "2",
+            movie_id: this.props.match.params.ficheNumber,
+            rate : value
+          };
+          axios.post('http://localhost:5050/rating', { ...rating })
+            .then(res => {
+            });
+          swal("Rated", "This movie has been rated !", "success");
+        };
+      });
+  };
+
   render() {
     return (
       <div className="container-fluid">
@@ -82,11 +155,20 @@ class Fiche extends React.Component {
           <div className="movie-pic row">
             <div className="movie-fav col-lg-4 col-md-12">
               <img className="movie-poster" src={"https://image.tmdb.org/t/p/w500" + this.state.fiche.poster_path} alt={this.state.fiche.original_title} />
-              <img src={favlogo} className="favicon" onClick={this.addFav} alt="fav" title="Favorite" />
+              <img src={this.state.favoriteLogo} className="favicon" onClick={this.addFav} alt="fav" title={this.state.favoriteLogoTitle} />
             </div>
             <div className="youtube col-lg-6 col-md-12"><Youtube className="heigh-youtube" videoId={this.state.videoId} />
               <p className="movie-date">Release date : {this.state.fiche.release_date}</p>
             </div>
+          </div>
+          <div className="Rating">
+            Rate this movie : <Rating stop={10} onClick={(value) => this.addRate(value)}
+              placeholderRating={this.state.rateToSet}
+              placeholderSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" />}
+              emptySymbol={<img src="https://cdn3.iconfinder.com/data/icons/pretty-office-part-3/256/Star_empty-512.png" className="Rate-icon" />}
+              fullSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" />}
+              onClick={this.addRate}
+            />
           </div>
           <div className="movie-infos container ">
             <div className="movie-synopsis mb-5">

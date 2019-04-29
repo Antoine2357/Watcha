@@ -153,6 +153,15 @@ section.route-section {
 .containing::-webkit-scrollbar { 
   height:  0 !important; 
 }
+.containing::-moz-scrollbar { 
+  height:  0 !important; 
+}
+.containing::-o-scrollbar { 
+  height:  0 !important; 
+}
+.containing::-ms-scrollbar { 
+  height:  0 !important; 
+}
 
 
 .equipe {

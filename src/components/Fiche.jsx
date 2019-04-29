@@ -192,26 +192,27 @@ class Fiche extends React.Component {
               <div className="ml-5">
                 <h4 className="">Casting</h4></div>
               <div className="ul-actors-pics mt-3">
-                <CastingActors idFilm={this.props.match.params.ficheNumber} />
+              {console.log(this.state.fiche)}
+                <CastingActors idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title}/>
               </div>
             </div>
             <div className="movie-director">
               <div className="infos-casting">
                 <h4>Director</h4>
                 <ul>
-                  <CastDirector idFilm={this.props.match.params.ficheNumber} />
+                  <CastDirector idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title} />
                 </ul>
               </div>
               <div className="movie-casttech">
                 <h4>Production</h4>
                 <ul>
-                  <CastTech idFilm={this.props.match.params.ficheNumber} />
+                  <CastTech idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title} />
                 </ul>
               </div>
               <div className="movie-music">
                 <h4>Music</h4>
                 <ul>
-                  <CastMusic idFilm={this.props.match.params.ficheNumber} />
+                  <CastMusic idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title}/>
                 </ul>
               </div>
             </div>

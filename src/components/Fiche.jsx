@@ -217,8 +217,9 @@ class Fiche extends React.Component {
             </div>
             <div className="img-down">
               <img src={"https://image.tmdb.org/t/p/w500" + this.state.fiche.backdrop_path} alt={this.state.fiche.original_title} />
+              <p><Footer className="footer" /></p>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
     );

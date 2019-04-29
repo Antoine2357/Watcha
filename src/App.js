@@ -77,7 +77,7 @@ class App extends Component {
                 </div>
               </Collapse>
                 <ul>
-                  <li className="nav-item">
+                  <div className="nav-item">
                   
                     <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                       <DropdownToggle nav caret>
@@ -91,7 +91,7 @@ class App extends Component {
                     </DropdownItem>
                   </DropdownMenu>        
                     </Dropdown>
-                  </li>
+                  </div>
                 </ul>
                 </Navbar>
                 <form className="recherche">

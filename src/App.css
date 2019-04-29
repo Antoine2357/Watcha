@@ -169,3 +169,10 @@ section.route-section {
   height : 15%;
   border-radius: 50px;
 }
+
+.littleInfo {
+  color: #45D932;
+  font-size:14px;
+  font-style: italic;
+  text-align: center;
+}

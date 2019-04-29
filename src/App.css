@@ -175,21 +175,19 @@ section.route-section {
 .menu{
   color: green;
 }
-.nav-item{
-  padding-right: 4%;
-}
+
 .navbar-light .navbar-toggler-icon {
   background-image: url("./components/img/menu.png")!important; 
 }
 .navbar{
   background-color: black;
 }
-.navbar ul{
-  padding-right: 70;
+.navbar-expand-md{
+  justify-content: space-around !important;
 }
 .link-nav{
   text-align: left !important;
-  margin-left: 1%;
+  margin-left: 5%;
 }
 .navbar-collapse{
   flex-grow: 0 !important;

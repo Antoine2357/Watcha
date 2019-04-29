@@ -175,16 +175,24 @@ section.route-section {
 .menu{
   color: green;
 }
-
+.nav-item{
+  padding-right: 4%;
+}
 .navbar-light .navbar-toggler-icon {
   background-image: url("./components/img/menu.png")!important; 
 }
 .navbar{
   background-color: black;
 }
+.navbar ul{
+  padding-right: 70;
+}
 .link-nav{
   text-align: left !important;
-  margin-left: 5%;
+  margin-left: 1%;
+}
+.navbar-collapse{
+  flex-grow: 0 !important;
 }
 @media only screen and (max-width: 800px) {
 

@@ -49,7 +49,7 @@ class App extends Component {
               
                 <ul>
                   <li><NavLink activeClassName="active" style={{ textDecoration: 'none', outline: 'none' }} exact to="/">
-                    <img className="logo" src="https://image.noelshack.com/fichiers/2019/15/5/1555076151-screenshot-from-2019-04-12-11-21-07-convertimage-1.png" />
+                    <img className="logo" src="https://image.noelshack.com/fichiers/2019/15/5/1555076151-screenshot-from-2019-04-12-11-21-07-convertimage-1.png" alt="" />
                   </NavLink></li>
                 </ul>
               <NavbarToggler color="light" onClick={this.handleToggle} />

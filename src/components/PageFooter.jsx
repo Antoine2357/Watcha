@@ -20,7 +20,7 @@ class PageFooter extends Component {
                             <img className="movie-poster" src={vignetteFooter} alt="POSTER" />
                         </div>
                         <div className="youtube col-lg-6 col-md-12">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/mQJI3rpre10" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="560" height="315" title="bruce" src="https://www.youtube.com/embed/mQJI3rpre10" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div className="movie-infos container ">
@@ -41,7 +41,7 @@ class PageFooter extends Component {
                             </div>
                         </div>
                         <div className="img-down">
-                            <a href="https://wildcodeschool.fr/" target="_blank"><img src={WildCodeSchool} alt="WildCodeSchool" /></a>
+                            <a href="https://wildcodeschool.fr/" target="_blank" rel="noopener noreferrer"><img src={WildCodeSchool} alt="WildCodeSchool" /></a>
                         </div>
                     </div>
                 </div>

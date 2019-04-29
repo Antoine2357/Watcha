@@ -108,10 +108,8 @@ class Fiche extends React.Component {
         if (res.data.length !== 0) {
           this.setState({ rateToSet: res.data[0].rate })
         }
-
       })
   };
-
   addRate = (value) => {
     axios.get(`http://localhost:5050/rating?movie_id=${this.props.match.params.ficheNumber}&user=2`)
       .then(res => {
@@ -146,7 +144,6 @@ class Fiche extends React.Component {
         };
       });
   };
-
   render() {
     return (
       <div className="container-fluid">

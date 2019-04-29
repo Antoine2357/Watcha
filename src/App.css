@@ -176,3 +176,9 @@ section.route-section {
   font-style: italic;
   text-align: center;
 }
+.team-project-2 a{
+  margin: 0.2vw;
+}
+.team-project-2{
+  height: 20%;
+}

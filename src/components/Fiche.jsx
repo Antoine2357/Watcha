@@ -172,8 +172,8 @@ class Fiche extends React.Component {
                   />
                 </div>
                 <div className="faviconblock">
-                  <p className="addfav">Add to favorites :</p>
-                  <img src={this.state.favoriteLogo} className="favicon" onClick={this.addFav} alt="fav" title={this.state.favoriteLogoTitle} />
+                <p className="addfav">Add to favorites :</p>
+                <img src={this.state.favoriteLogo} className="favicon" onClick={this.addFav} alt="fav" title={this.state.favoriteLogoTitle} />
                 </div>
               </div>
             </div>
@@ -192,7 +192,8 @@ class Fiche extends React.Component {
               <div className="ml-5">
                 <h4 className="">Casting</h4></div>
               <div className="ul-actors-pics mt-3">
-                <CastingActors idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title} />
+              {console.log(this.state.fiche)}
+                <CastingActors idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title}/>
               </div>
             </div>
             <div className="movie-director">
@@ -211,7 +212,7 @@ class Fiche extends React.Component {
               <div className="movie-music">
                 <h4>Music</h4>
                 <ul>
-                  <CastMusic idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title} />
+                  <CastMusic idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title}/>
                 </ul>
               </div>
             </div>
@@ -219,7 +220,7 @@ class Fiche extends React.Component {
               <img src={"https://image.tmdb.org/t/p/w500" + this.state.fiche.backdrop_path} alt={this.state.fiche.original_title} />
               <p><Footer className="footer" /></p>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
     );

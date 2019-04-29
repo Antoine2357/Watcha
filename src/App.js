@@ -89,8 +89,6 @@ class App extends Component {
                       My favorites
                       </NavLink>
                     </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>+ Add liste</DropdownItem>
                   </DropdownMenu>        
                     </Dropdown>
                   </li>

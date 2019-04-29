@@ -153,6 +153,15 @@ section.route-section {
 .containing::-webkit-scrollbar { 
   height:  0 !important; 
 }
+.containing::-moz-scrollbar { 
+  height:  0 !important; 
+}
+.containing::-o-scrollbar { 
+  height:  0 !important; 
+}
+.containing::-ms-scrollbar { 
+  height:  0 !important; 
+}
 
 
 .equipe {
@@ -160,6 +169,7 @@ section.route-section {
   height : 15%;
   border-radius: 50px;
 }
+
 
 /* Navigation */
 .menu{
@@ -238,3 +248,11 @@ section.route-section {
 .recherche{
   background-color: black;
 }
+
+.littleInfo {
+  color: #45D932;
+  font-size:14px;
+  font-style: italic;
+  text-align: center;
+}
+

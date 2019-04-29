@@ -35,6 +35,7 @@ class GalleryFavoris extends Component {
       <div>
         <div className="container-fluid">
           <div className="row" >
+          <h2 className="title-cat">My Favorites</h2>
             <div className="gallery-type">
               {this.state.movies.map((film, idx) => {
                 return (

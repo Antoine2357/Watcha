@@ -165,16 +165,15 @@ class Fiche extends React.Component {
                 <div className="Rating">
                   Rate this movie : <Rating stop={10} onClick={(value) => this.addRate(value)}
                     placeholderRating={this.state.rateToSet}
-                    placeholderSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" />}
-                    emptySymbol={<img src="https://cdn3.iconfinder.com/data/icons/pretty-office-part-3/256/Star_empty-512.png" className="Rate-icon" />}
-                    fullSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" />}
-                    onClick={this.addRate}
+                    placeholderSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" alt="" />}
+                    emptySymbol={<img src="https://cdn3.iconfinder.com/data/icons/pretty-office-part-3/256/Star_empty-512.png" className="Rate-icon" alt="" />}
+                    fullSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" alt="" />}
                   />
                 </div>
-                <br />
-                Add to favorites :
-                <br />
+                <div className="faviconblock">
+                <p className="addfav">Add to favorites :</p>
                 <img src={this.state.favoriteLogo} className="favicon" onClick={this.addFav} alt="fav" title={this.state.favoriteLogoTitle} />
+                </div>
               </div>
             </div>
           </div>
@@ -192,26 +191,27 @@ class Fiche extends React.Component {
               <div className="ml-5">
                 <h4 className="">Casting</h4></div>
               <div className="ul-actors-pics mt-3">
-                <CastingActors idFilm={this.props.match.params.ficheNumber} />
+              {console.log('')}
+                <CastingActors idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title}/>
               </div>
             </div>
             <div className="movie-director">
               <div className="infos-casting">
                 <h4>Director</h4>
                 <ul>
-                  <CastDirector idFilm={this.props.match.params.ficheNumber} />
+                  <CastDirector idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title} />
                 </ul>
               </div>
               <div className="movie-casttech">
                 <h4>Production</h4>
                 <ul>
-                  <CastTech idFilm={this.props.match.params.ficheNumber} />
+                  <CastTech idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title} />
                 </ul>
               </div>
               <div className="movie-music">
                 <h4>Music</h4>
                 <ul>
-                  <CastMusic idFilm={this.props.match.params.ficheNumber} />
+                  <CastMusic idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title}/>
                 </ul>
               </div>
             </div>

@@ -20,7 +20,7 @@ function Routing({ location }) {
           classNames="fade"
         >
           <section className="route-section">
-            <Switch location={location}>
+            <Switch location={location} key={location}>
               <Route exact path="/" component={HomePage} />
               <Route path="/fiche/:ficheNumber(\d+)" component={Fiche} />
               <Route path="/casting/:castingNumber(\d+)" component={Casting} />

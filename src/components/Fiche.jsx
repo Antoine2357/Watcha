@@ -171,10 +171,10 @@ class Fiche extends React.Component {
                     onClick={this.addRate}
                   />
                 </div>
-                <br />
-                Add to favorites :
-                <br />
+                <div className="faviconblock">
+                <p className="addfav">Add to favorites :</p>
                 <img src={this.state.favoriteLogo} className="favicon" onClick={this.addFav} alt="fav" title={this.state.favoriteLogoTitle} />
+                </div>
               </div>
             </div>
           </div>

@@ -168,7 +168,6 @@ class Fiche extends React.Component {
                     placeholderSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" alt="" />}
                     emptySymbol={<img src="https://cdn3.iconfinder.com/data/icons/pretty-office-part-3/256/Star_empty-512.png" className="Rate-icon" alt="" />}
                     fullSymbol={<img src="https://cdn3.iconfinder.com/data/icons/shapes-have-feelings-too-v2/640/star-face-emoji-shapes-happy-emoticons-smiley-2-512.png" className="Rate-icon" alt="" />}
-                    onClick={this.addRate}
                   />
                 </div>
                 <div className="faviconblock">
@@ -192,7 +191,7 @@ class Fiche extends React.Component {
               <div className="ml-5">
                 <h4 className="">Casting</h4></div>
               <div className="ul-actors-pics mt-3">
-              {console.log(this.state.fiche)}
+              {console.log('')}
                 <CastingActors idFilm={this.props.match.params.ficheNumber} key={this.state.fiche.original_title}/>
               </div>
             </div>

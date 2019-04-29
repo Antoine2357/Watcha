@@ -31,13 +31,25 @@ class PageFooter extends Component {
                         <div className="movie-casting">
                             <div className="ml-5">
                                 <h4 className="">Casting</h4></div>
-                            <div className="ul-actors-pics mt-3">
-                                <img className="equipe" src={antoine} alt="img" />
-                                <img className="equipe" src={benoit} alt="img" />
-                                <img className="equipe" src={damien} alt="img" />
-                                <img className="equipe" src={johan} alt="img" />
-                                <img className="equipe" src={louis} alt="img" />
-                                <img className="equipe" src={marylin} alt="img" />
+                                <div className="ul-actors-pics mt-3">
+                                <a href="https://www.linkedin.com/in/antoine-jacqmin-72bb14182/" target="_blank">
+                                    <img className="equipe" src={antoine} alt="img" />
+                                </a>  
+                                <a href="https://www.linkedin.com/in/benoit-lebacq/" target="_blank"> 
+                                    <img className="equipe" src={benoit} alt="img" />
+                                 </a>
+                                <a href="https://www.linkedin.com/in/damien-ruckebusch-bb955815/" target="_blank">   
+                                    <img className="equipe" src={damien} alt="img" />
+                                </a>
+                                <a href="https://www.linkedin.com/in/johan-ceugnart/" target="_blank">
+                                    <img className="equipe" src={johan} alt="img" />
+                                </a>
+                                <a href="https://www.linkedin.com/in/louis-allard-devweb/" target="_blank">
+                                    <img className="equipe" src={louis} alt="img" />
+                                </a>
+                                <a href="https://www.linkedin.com/in/marylinealves/" target="_blank">
+                                    <img className="equipe" src={marylin} alt="img" />
+                                </a>
                             </div>
                         </div>
                         <div className="img-down">
